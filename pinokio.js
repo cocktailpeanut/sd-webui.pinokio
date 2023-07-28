@@ -6,7 +6,7 @@ const exists = (filepath) => {
 }
 module.exports = {
   title: "Stable Diffusion web UI",
-  description: "AUTOMATIC1111/stable-diffusion-webui",
+  description: "One-click launcher for Stable Diffusion web UI (AUTOMATIC1111/stable-diffusion-webui)",
   icon: "icon.png",
   update: async (kernel) => {
     return "update.json"

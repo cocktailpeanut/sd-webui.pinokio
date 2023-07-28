@@ -49,7 +49,7 @@ module.exports = {
       }]
     } else {
       return [{
-        html: '<b><i class="fa-solid fa-plug"></i> Install Stable Diffusion XL</b>',
+        html: '<i class="fa-solid fa-plug"></i> Install Stable Diffusion XL',
         type: "link",
         href: "install.js?run=true&fullscreen=true"
       }, {

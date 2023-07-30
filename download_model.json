@@ -1,0 +1,30 @@
+{
+  "run": [{
+    "method": "input",
+    "params": {
+      "title": "Download a model",
+      "description": "Enter the model download url",
+      "form": [{
+        "key": "url",
+        "title": "url"
+      }]
+    }
+  }, {
+    "method": "fs.download",
+    "params": {
+      "url": "{{input.url}}",
+      "path": "automatic1111/models/Stable-diffusion"
+    }
+  }, {
+    "method": "input",
+    "params": {
+      "title": "Success!",
+      "description": "Model download complete. Now refresh the models dropdown in the web ui to vies the updated list."
+    }
+  }, {
+    "method": "browser.open",
+    "params": {
+      "uri": "/"
+    }
+  }]
+}

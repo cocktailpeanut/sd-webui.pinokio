@@ -33,7 +33,7 @@ class Automatic1111 {
       await fs.promises.writeFile(path.resolve(__dirname, "automatic1111", "webui-user.bat"), newtext)
     } else {
       // linux
-      if (vendors.includse("advanced micro devices")) {
+      if (vendors.includes("advanced micro devices")) {
       //if (/amd/i.test(vendor)) {
         // lshqqytiger
         defaultArgs += "--precision full --no-half-vae --xformers --api"

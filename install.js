@@ -17,7 +17,7 @@ module.exports = async (kernel) => {
     }]
   } else {
     let test;
-    if (vendors.includse("advanced micro devices")) {
+    if (vendors.includes("advanced micro devices")) {
       if (platform === 'win32') {
         setup = [{
           method: "shell.run",

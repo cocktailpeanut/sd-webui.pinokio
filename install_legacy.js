@@ -3,7 +3,8 @@ const os = require('os')
 module.exports = async (kernel) => {
   const platform = os.platform()
   const graphics = await kernel.system.graphics()
-  const vendor = graphics.controllers[0].vendor
+  //const vendor = graphics.controllers[0].vendor
+  const vendors = graphics.controllers.map((c) => { return c.vendor.toLowerCase() })
   let setup
   if (platform === "darwin") {
     setup = [{
@@ -15,7 +16,8 @@ module.exports = async (kernel) => {
       params: { message: "git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui automatic1111", path: path.resolve(__dirname) },
     }]
   } else {
-    if (/amd/i.test(vendor)) {
+    //if (/amd/i.test(vendor)) {
+    if (vendors.includes("advanced micro devices")) {
       if (platform === 'win32') {
         setup = [{
           method: "shell.run",

@@ -6,15 +6,17 @@ class Automatic1111 {
   async config(req, ondata, kernel) {
     let graphics = await kernel.system.graphics()
     let platform = os.platform()
-    let vendor = graphics.controllers[0].vendor
-    ondata({ raw: `\r\nVendor: ${vendor}\r\n` })
+    //let vendor = graphics.controllers[0].vendor
+    const vendors = graphics.controllers.map((c) => { return c.vendor.toLowerCase() })
+    //ondata({ raw: `\r\nVendor: ${vendor}\r\n` })
 
     let legacy = req.params && req.params.legacy
     // if legacy => ""
     // if SDXL (not legacy) => "--no-download-sd-model"
     let defaultArgs = (legacy ? "" : "--no-download-sd-model ")
     if (platform === 'darwin') {
-      if (/apple/i.test(vendor)) {
+      if (vendors.includes("apple")) {
+//      if (/apple/i.test(vendor)) {
         defaultArgs += "--skip-torch-cuda-test --upcast-sampling --use-cpu interrogate --no-half --api"
       } else {
         defaultArgs += "--skip-torch-cuda-test --upcast-sampling --use-cpu all --no-half --api"
@@ -31,7 +33,8 @@ class Automatic1111 {
       await fs.promises.writeFile(path.resolve(__dirname, "automatic1111", "webui-user.bat"), newtext)
     } else {
       // linux
-      if (/amd/i.test(vendor)) {
+      if (vendors.includse("advanced micro devices")) {
+      //if (/amd/i.test(vendor)) {
         // lshqqytiger
         defaultArgs += "--precision full --no-half-vae --xformers --api"
       } else {

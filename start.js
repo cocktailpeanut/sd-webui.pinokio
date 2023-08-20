@@ -21,7 +21,7 @@ module.exports = async (kernel) => {
     }, {
       "method": "shell.enter",
       "params": {
-        "message": "pip install tqdm==4.66.1",
+        "message": "pip install tqdm moviepy --upgrade",
         "on": [{
           "event": null,
           "return": true

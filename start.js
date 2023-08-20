@@ -10,6 +10,33 @@ module.exports = async (kernel) => {
         },
       }
     }, {
+      "method": "shell.enter",
+      "params": {
+        "message": "{{os.platform() === 'win32' ? 'venv\\\\Scripts\\\\activate' : 'source venv/bin/activate'}} venv",
+        "on": [{
+          "event": null,
+          "return": true
+        }]
+      }
+    }, {
+      "method": "shell.enter",
+      "params": {
+        "message": "pip install tqdm==4.66.1",
+        "on": [{
+          "event": null,
+          "return": true
+        }]
+      }
+    }, {
+      "method": "shell.enter",
+      "params": {
+        "message": "{{os.platform() === 'win32' ? 'venv\\\\Scripts\\\\deactivate' : 'source venv/bin/deactivate'}}",
+        "on": [{
+          "event": null,
+          "return": true
+        }]
+      }
+    }, {
       method: "shell.enter",
       params: {
         message: "{{os.platform() === 'win32' ? 'webui-user.bat' : 'bash webui.sh -f'}}",

@@ -16,8 +16,10 @@ module.exports = async (kernel) => {
       params: { message: "git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui automatic1111", path: path.resolve(__dirname) },
     }]
   } else {
-    let test;
-    if (vendors.includes("advanced micro devices")) {
+    let test = vendors.filter((vendor) => {
+      return /advanced micro devices/i.test(vendor)
+    }).length > 0
+    if (test) {
       if (platform === 'win32') {
         setup = [{
           method: "shell.run",

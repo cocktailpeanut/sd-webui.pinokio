@@ -46,9 +46,6 @@ module.exports = {
       }, {
         html: '<i class="fa-solid fa-gear"></i> Configure',
         href: (os.platform() === 'win32' ? "automatic1111/webui-user.bat#L6" : "automatic1111/webui-user.sh#L13")
-      }, {
-        html: "<i class='fa-solid fa-rotate'></i> Update",
-        href: "update.json?fullscreen=true&run=true"
       }]
     } else {
       return [{

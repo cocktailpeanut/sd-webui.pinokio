@@ -114,5 +114,13 @@ module.exports = async (kernel) => {
       "uri": "/?selected=Stable Diffusion web UI"
     }
   }])
-  return { run }
+  let o = { run }
+  if (platform === 'darwin') {
+    o.requires = [{
+      name: "brew",
+      uri: "brew",
+      type: "bin"
+    }]
+  }
+  return o
 }

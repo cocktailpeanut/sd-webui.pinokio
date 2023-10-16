@@ -117,13 +117,8 @@ module.exports = async (kernel) => {
   let o = { run }
   if (platform === 'darwin') {
     o.requires = [{
-      name: "zip",
-      uri: "zip",
-      type: "bin"
-    }, {
-      name: "brew",
-      uri: "brew",
-      type: "bin"
+      platform: "darwin",
+      name: "brew"
     }]
   }
   return o

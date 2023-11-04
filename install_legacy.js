@@ -13,7 +13,7 @@ module.exports = async (kernel) => {
       //params: { message: "brew install protobuf rust wget", },
     }, {
       method: "shell.run",
-      params: { message: "git clone https://github.com/cocktailpeanut/stable-diffusion-webui automatic1111", path: path.resolve(__dirname) },
+      params: { message: "git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui automatic1111", path: path.resolve(__dirname) },
     }]
   } else {
     //if (/amd/i.test(vendor)) {
@@ -29,13 +29,13 @@ module.exports = async (kernel) => {
       } else {
         setup = [{
           method: "shell.run",
-          params: { message: "git clone https://github.com/cocktailpeanut/stable-diffusion-webui automatic1111", path: __dirname },
+          params: { message: "git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui automatic1111", path: __dirname },
         }]
       }
     } else {
       setup = [{
         method: "shell.run",
-        params: { message: "git clone https://github.com/cocktailpeanut/stable-diffusion-webui automatic1111", path: __dirname },
+        params: { message: "git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui automatic1111", path: __dirname },
       }]
     }
   }

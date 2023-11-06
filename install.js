@@ -85,6 +85,7 @@ module.exports = async (kernel) => {
     "params": {
       "path": "automatic1111",
       "env": {
+        "SD_WEBUI_RESTARTING": 1,
         "HF_HOME": "../huggingface"
       },
     }

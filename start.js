@@ -1,11 +1,12 @@
-const os = require('os')
 module.exports = async (kernel) => {
   return {
+    daemon: true,
     run: [{
       method: "shell.start",
       params: {
         path: "automatic1111",
         env: {
+          SD_WEBUI_RESTARTING: 1,
           HF_HOME: "../huggingface"
         },
       }
@@ -41,7 +42,7 @@ module.exports = async (kernel) => {
       params: {
         message: "{{os.platform() === 'win32' ? 'webui-user.bat' : 'bash webui.sh -f'}}",
         on: [{
-          event: "/(http:\/\/127.0.0.1:[0-9]+)/",
+          event: "/.*(http:\/\/127.0.0.1:[0-9]+).+(model loaded).*/i",
           return: "{{event.matches[0][1]}}"
         }]
       }
@@ -49,23 +50,15 @@ module.exports = async (kernel) => {
       method: "self.set",
       params: {
         "session.json": {
-          "url": "{{input}}"
+          "url": "{{input}}",
         }
-
       }
     }, {
-      method: "browser.open",
-      params: {
-        uri: "/?selected=Stable Diffusion web UI"
+      "method": "browser.open",
+      "params": {
+        "uri": "{{self.session.url}}",
+        "target": "_blank"
       }
-//    }, {
-//      method: "notify",
-//      params: {
-//        html: "Successfully launched. Go to the dashboard to open the web ui",
-//        href: "/?selected=Stable Diffusion web UI"
-//      }
-    }, {
-      method: "process.wait"
     }]
   }
 }
